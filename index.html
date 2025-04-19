@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panza Imóveis | Seu imóvel ideal está aqui</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #0a2647;
+            --secondary-color: #144272;
+            --accent-color: #205295;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --gray-color: #6c757d;
+            --light-gray: #e9ecef;
+        }
+        
+        body {
+            background-color: var(--light-color);
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 45px;
+        }
+        
+        .logo-text {
+            margin-left: 10px;
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+        
+        .logo-text span {
+            color: var(--accent-color);
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info a {
+            margin-left: 20px;
+            color: var(--dark-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info a i {
+            margin-right: 5px;
+            color: var(--accent-color);
+        }
+        
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            height: 60px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin: 0 15px;
+            position: relative;
+        }
+        
+        .nav-links li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            font-size: 16px;
+            padding: 10px 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .nav-links li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background-color: var(--accent-color);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links li a:hover::after {
+            width: 100%;
+        }
+        
+        .user-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-actions a {
+            margin-left: 15px;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 8px 18px;
+            border-radius: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 70vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/api/placeholder/1200/800') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        /* Search Section */
+        .search-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 1000px;
+            margin: -50px auto 50px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+        
+        .search-tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .search-tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .search-tab.active {
+            border-bottom: 3px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+        
+        .search-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .form-group {
+            flex: 1 1 200px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+        
+        .search-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin-top: 25px;
+        }
+        
+        .search-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Featured Properties */
+        .section-heading {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-heading h2 {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .section-heading p {
+            color: var(--gray-color);
+        }
+        
+        .properties {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+        
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .property-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .property-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .property-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .property-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .property-card:hover .property-img img {
+            transform: scale(1.1);
+        }
+        
+        .property-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .property-like {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: white;
+            color: #ff3366;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .property-like:hover {
+            background-color: #ff3366;
+            color: white;
+        }
+        
+        .property-info {
+            padding: 20px;
+        }
+        
+        .property-price {
+            color: var(--primary-color);
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .property-location {
+            display: flex;
+            align-items: center;
+            color: var(--gray-color);
+            margin-bottom: 15px;
+        }
+        
+        .property-location i {
+            margin-right: 5px;
+        }
+        
+        .property-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .property-features {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--light-gray);
+            padding-top: 15px;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: var(--gray-color);
+        }
+        
+        .feature i {
+            margin-right: 5px;
+            color: var(--accent-color);
+        }
+        
+        /* No Results Message */
+        .no-results {
+            text-align: center;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: none;
+        }
+        
+        .no-results h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .no-results p {
+            color: var(--gray-color);
+        }
+        
+        /* Services Section */
+        .services {
+            background-color: #f8f9fa;
+            padding: 80px 20px;
+        }
+        
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            color: var(--primary-color);
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .service-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .service-desc {
+            color: var(--gray-color);
+            line-height: 1.6;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 50px 20px 20px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo img {
+            height: 40px;
+        }
+        
+        .footer-about p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+        }
+        
+        .footer-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-links ul,
+        .footer-contact ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-contact li {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        .footer-newsletter p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .newsletter-form {
+            display: flex;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+        }
+        
+        .newsletter-form button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 20px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 14px;
+            color: #ccc;
+        }
+        
+        .hero {
+                position: relative;
+                height: 70vh;
+                background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('img/banner.png') center/cover no-repeat;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                text-align: center;
+            }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .top-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .contact-info {
+                margin-top: 15px;
+            }
+            
+            nav {
+                flex-direction: column;
+                height: auto;
+                padding: 10px 5%;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                margin: 15px 0;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
+            }
+            
+            .user-actions {
+                margin-top: 15px;
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .search-container {
+                margin-top: 30px;
+            }
+            
+            .search-tabs {
+                flex-wrap: wrap;
+            }
+            
+            .search-tab {
+                flex: 1 0 33.333%;
+                text-align: center;
+            }
+            
+            .form-group {
+                flex: 1 0 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="top-bar">
+            <div class="logo">
+                <svg width="45" height="45" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="40" fill="#0a2647"/>
+                    <path d="M30,50 L50,30 L70,50 L70,80 L30,80 Z" fill="#205295"/>
+                    <circle cx="50" cy="45" r="8" fill="#ffffff"/>
+                </svg>
+                <div class="logo-text">Panza <span>Imóveis</span></div>
+            </div>
+            <div class="contact-info">
+                <a href="tel:+554299999999"><i class="fas fa-phone"></i>(42) 9999-9999</a>
+                <a href="mailto:contato@panzaimoveis.com.br"><i class="fas fa-envelope"></i>contato@panzaimoveis.com.br</a>
+            </div>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#">Início</a></li>
+                <li><a class="tab-link" data-tab="comprar" href="#">Comprar</a></li>
+                <li><a class="tab-link" data-tab="alugar" href="#">Alugar</a></li>
+                <li><a class="tab-link" data-tab="lancamentos" href="#">Lançamentos</a></li>
+                <li><a href="#">Sobre Nós</a></li>
+                <li><a href="#contato">Nossas redes</a></li>
+            </ul>
+            <div class="user-actions">
+                <a href="FalePanza.html" class="btn-outline">Fale com Panza</a>
+                <a href="#" class="btn-primary">Anuncie seu Imóvel</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Encontre o Imóvel dos seus Sonhos</h1>
+            <p>Mais de 5.000 imóveis disponíveis para você em todo o Brasil</p>
+            <a href="#featured-properties" class="btn-primary">Ver Imóveis em Destaque</a>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <div class="search-container" id="property-search-container">
+        <div class="search-tabs">
+            <div class="search-tab active" data-tab="comprar">Comprar</div>
+            <div class="search-tab" data-tab="alugar">Alugar</div>
+            <div class="search-tab" data-tab="lancamentos">Lançamentos</div>
+        </div>
+        
+        <div id="property-search-anchor" style="position: relative; top: -100px;"></div>
+        
+        <form class="search-form" id="property-search-form">
+            <div class="form-group">
+                <label for="location">Localização</label>
+                <input type="text" id="location" placeholder="Cidade, bairro ou região">
+            </div>
+            <div class="form-group">
+                <label for="property-type">Tipo de Imóvel</label>
+                <select id="property-type">
+                    <option value="">Todos os tipos</option>
+                    <option value="apartamento">Apartamento</option>
+                    <option value="casa">Casa</option>
+                    <option value="comercial">Comercial</option>
+                    <option value="terreno">Terreno</option>
+                    <option value="cobertura">Cobertura</option>
+                    <option value="chacara">Chácara</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="price-range">Faixa de Preço</label>
+                <select id="price-range">
+                    <option value="">Qualquer valor</option>
+                    <option value="0-300000">Até R$ 300.000</option>
+                    <option value="300000-500000">R$ 300.000 - R$ 500.000</option>
+                    <option value="500000-800000">R$ 500.000 - R$ 800.000</option>
+                    <option value="800000-1000000">R$ 800.000 - R$ 1.000.000</option>
+                    <option value="1000000-999999999">Acima de R$ 1.000.000</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="bedrooms">Quartos</label>
+                <select id="bedrooms">
+                    <option value="">Qualquer</option>
+                    <option value="1">1+</option>
+                    <option value="2">2+</option>
+                    <option value="3">3+</option>
+                    <option value="4">4+</option>
+                </select>
+            </div>
+            <button type="submit" class="search-btn"><i class="fas fa-search"></i> Buscar Imóveis</button>
+        </form>
+    </div>
+
+    <!-- Featured Properties -->
+    <section class="properties" id="featured-properties">
+        <div class="section-heading">
+            <h2>Imóveis em Destaque</h2>
+            <p>Confira nossos melhores imóveis disponíveis para você</p>
+        </div>
+        
+        <!-- No Results Message -->
+        <div class="no-results">
+            <h3>Nenhum imóvel encontrado</h3>
+            <p>Tente ajustar os filtros para encontrar imóveis que atendam às suas necessidades.</p>
+        </div>
+        
+        <div class="property-grid" id="property-grid">
+            <!-- Property 1 - São Paulo -->
+            <div class="property-card" 
+                 data-type="apartamento" 
+                 data-location="Jardins, São Paulo" 
+                 data-price="650000" 
+                 data-bedrooms="3" 
+                 data-transaction="venda">
+                <div class="property-img">
+                    <img src="img/2.png" alt="Apartamento Moderno">
+                    <div class="property-tag">Venda</div>
+                    <div class="property-like"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="property-info">
+                    <div class="property-price">R$ 650.000</div>
+                    <div class="property-location"><i class="fas fa-map-marker-alt"></i> Jardins, São Paulo</div>
+                    <h3 class="property-title">Apartamento Moderno com Vista Panorâmica</h3>
+                    <div class="property-features">
+                        <div class="feature"><i class="fas fa-bed"></i> 3 Quartos</div>
+                        <div class="feature"><i class="fas fa-bath"></i> 2 Banheiros</div>
+                        <div class="feature"><i class="fas fa-vector-square"></i> 120m²</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Property 2 - São Paulo -->
+            <div class="property-card" 
+                 data-type="casa" 
+                 data-location="Moema, São Paulo" 
+                 data-price="3500" 
+                 data-bedrooms="4" 
+                 data-transaction="aluguel">
+                <div class="property-img">
+                    <img src="img/3.png" alt="Casa Ampla">
+                    <div class="property-tag">Aluguel</div>
+                    <div class="property-like"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="property-info">
+                    <div class="property-price">R$ 3.500/mês</div>
+                    <div class="property-location"><i class="fas fa-map-marker-alt"></i> Moema, São Paulo</div>
+                    <h3 class="property-title">Casa Ampla com Piscina e Área Gourmet</h3>
+                    <div class="property-features">
+                        <div class="feature"><i class="fas fa-bed"></i> 4 Quartos</div>
+                        <div class="feature"><i class="fas fa-bath"></i> 3 Banheiros</div>
+                        <div class="feature"><i class="fas fa-vector-square"></i> 250m²</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Property 3 - São Paulo -->
+            <div class="property-card" 
+                 data-type="apartamento" 
+                 data-location="Vila Nova Conceição, São Paulo"
+                 data-price="890000" 
+                 data-bedrooms="2" 
+                 data-transaction="lancamento">
+                <div class="property-img">
+                    <img src="img/4.png" alt="Loft de Alto Padrão">
+                    <div class="property-tag">Lançamento</div>
+                    <div class="property-like"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="property-info">
+                    <div class="property-price">R$ 890.000</div>
+                    <div class="property-location"><i class="fas fa-map-marker-alt"></i> Vila Nova Conceição, São Paulo</div>
+                    <h3 class="property-title">Loft de Alto Padrão em Localização Privilegiada</h3>
+                    <div class="property-features">
+                        <div class="feature"><i class="fas fa-bed"></i> 2 Quartos</div>
+                        <div class="feature"><i class="fas fa-bath"></i> 2 Banheiros</div>
+                        <div class="feature"><i class="fas fa-vector-square"></i> 98m²</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Property 4 - São Paulo -->
+            <div class="property-card" 
+                 data-type="casa" 
+                 data-location="Alphaville, Barueri" 
+                 data-price="1200000" 
+                 data-bedrooms="5" 
+                 data-transaction="venda">
+                <div class="property-img">
+                    <img src="img/1.png" alt="Mansão Espetacular">
+                    <div class="property-tag">Venda</div>
+                    <div class="property-like"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="property-info">
+                    <div class="property-price">R$ 1.200.000</div>
+                    <div class="property-location"><i class="fas fa-map-marker-alt"></i> Alphaville, Barueri</div>
+                    <h3 class="property-title">Mansão Espetacular em Condomínio Fechado</h3>
+                    <div class="property-features">
+                        <div class="feature"><i class="fas fa-bed"></i> 5 Quartos</div>
+                        <div class="feature"><i class="fas fa-bath"></i> 4 Banheiros</div>
+                        <div class="feature"><i class="fas fa-vector-square"></i> 450m²</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Property 5 - Ponta Grossa -->
+            <div class="property-card" 
+                 data-type="apartamento" 
+                 data-location="Centro, Ponta Grossa" 
+                 data-price="425000" 
+                 data-bedrooms="3" 
+                 data-transaction="venda">
+                <div class="property-img">
+                    <img src="img/5.png" alt="Apartamento Centro">
+                    <div class="property-tag">Venda</div>
+                    <div class="property-like"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="property-info">
+                    <div class="property-price">R$ 425.000</div>
+                    <div class="property-location"><i class="fas fa-map-marker-alt"></i> Centro, Ponta Grossa</div>
+                    <h3 class="property-title">Apartamento com Excelente Localização</h3>
+                    <div class="property-features">
+                        <div class="feature"><i class="fas fa-bed"></i> 3 Quartos</div>
+                        <div class="feature"><i class="fas fa-bath"></i> 2 Banheiros</div>
+                        <div class="feature"><i class="fas fa-vector-square"></i> 105m²</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Property 6 - Campo Comprido -->
+            <div class="property-card" 
+                data-type="terreno" 
+                data-location="Campo Comprido, Curitiba" 
+                data-price="310000" 
+                data-bedrooms="0" 
+                data-transaction="venda">
+                <div class="property-img">
+                    <img src="img/6.png" alt="Terreno Curitiba">
+                    <div class="property-tag">Venda</div>
+                    <div class="property-like"><i class="far fa-heart"></i></div>
+                </div>
+                <div class="property-info">
+                    <div class="property-price">R$ 310.000</div>
+                    <div class="property-location"><i class="fas fa-map-marker-alt"></i> Campo Comprido, Curitiba</div>
+                    <h3 class="property-title">Terreno com 450m² em Bairro Nobre de Campo Comprido</h3>
+                    <div class="property-features">
+                        <div class="feature"><i class="fas fa-bed"></i> 3 Quartos</div>
+                        <div class="feature"><i class="fas fa-bath"></i> 2 Banheiros</div>
+                        <div class="feature"><i class="fas fa-vector-square"></i> 450m²</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imóveis adicionais em Ponta Grossa -->
+            <div class="property-card"
+                data-type="casa"
+                data-location="Uvaranas, Ponta Grossa"
+                data-price="320000"
+                data-bedrooms="2"
+                data-transaction="venda">
+                <div class="property-img">
+                    <img src="img/7.jpg" alt="Casa em Uvaranas">
+                    <div class="property-tag">Venda</div>
+                    <div class="property-like"><i class="far fa-heart"></i></div></div>
+                <div class="property-info"><div class="property-price">R$ 320.000</div><div class="property-location"><i class="fas fa-map-marker-alt"></i> Uvaranas, Ponta Grossa</div><h3 class="property-title">Casa com Quintal e Garagem</h3><div class="property-features"><div class="feature"><i class="fas fa-bed"></i> 2 Quartos</div><div class="feature"><i class="fas fa-bath"></i> 1 Banheiro</div><div class="feature"><i class="fas fa-vector-square"></i> 95m²</div></div></div>
+            </div>
+
+            <div class="property-card" data-type="apartamento" data-location="Oficinas, Ponta Grossa" data-price="2200" data-bedrooms="2" data-transaction="aluguel">
+                <div class="property-img"><img src="img/8.jpg" alt="Apartamento Oficinas"><div class="property-tag">Aluguel</div><div class="property-like"><i class="far fa-heart"></i></div></div>
+                <div class="property-info"><div class="property-price">R$ 2.200/mês</div><div class="property-location"><i class="fas fa-map-marker-alt"></i> Oficinas, Ponta Grossa</div><h3 class="property-title">Apartamento Novo com Sacada</h3><div class="property-features"><div class="feature"><i class="fas fa-bed"></i> 2 Quartos</div><div class="feature"><i class="fas fa-bath"></i> 1 Banheiro</div><div class="feature"><i class="fas fa-vector-square"></i> 85m²</div></div></div>
+            </div>
+
+            <div class="property-card" data-type="casa" data-location="Estrela, Ponta Grossa" data-price="1600" data-bedrooms="3" data-transaction="aluguel">
+                <div class="property-img"><img src="img/9.jpg" alt="Casa Estrela"><div class="property-tag">Aluguel</div><div class="property-like"><i class="far fa-heart"></i></div></div>
+                <div class="property-info"><div class="property-price">R$ 1.600/mês</div><div class="property-location"><i class="fas fa-map-marker-alt"></i> Estrela, Ponta Grossa</div><h3 class="property-title">Casa Térrea em Bairro Tranquilo</h3><div class="property-features"><div class="feature"><i class="fas fa-bed"></i> 3 Quartos</div><div class="feature"><i class="fas fa-bath"></i> 2 Banheiros</div><div class="feature"><i class="fas fa-vector-square"></i> 120m²</div></div></div>
+            </div>
+
+            <div class="property-card" data-type="apartamento" data-location="Centro, Ponta Grossa" data-price="530000" data-bedrooms="4" data-transaction="venda">
+                <div class="property-img"><img src="img/10.jpg" alt="Apartamento Luxuoso"><div class="property-tag">Venda</div><div class="property-like"><i class="far fa-heart"></i></div></div>
+                <div class="property-info"><div class="property-price">R$ 530.000</div><div class="property-location"><i class="fas fa-map-marker-alt"></i> Centro, Ponta Grossa</div><h3 class="property-title">Apartamento Alto Padrão com Elevador</h3><div class="property-features"><div class="feature"><i class="fas fa-bed"></i> 4 Quartos</div><div class="feature"><i class="fas fa-bath"></i> 3 Banheiros</div><div class="feature"><i class="fas fa-vector-square"></i> 150m²</div></div></div>
+            </div>
+
+            <div class="property-card" data-type="casa" data-location="Jardim Carvalho, Ponta Grossa" data-price="285000" data-bedrooms="2" data-transaction="venda">
+                <div class="property-img"><img src="img/11.jpg" alt="Casa Jardim Carvalho"><div class="property-tag">Venda</div><div class="property-like"><i class="far fa-heart"></i></div></div>
+                <div class="property-info"><div class="property-price">R$ 285.000</div><div class="property-location"><i class="fas fa-map-marker-alt"></i> Jardim Carvalho, Ponta Grossa</div><h3 class="property-title">Casa Nova com Acabamento Moderno</h3><div class="property-features"><div class="feature"><i class="fas fa-bed"></i> 2 Quartos</div><div class="feature"><i class="fas fa-bath"></i> 1 Banheiro</div><div class="feature"><i class="fas fa-vector-square"></i> 75m²</div></div></div>
+            </div>
+
+            <div class="property-card" data-type="apartamento" data-location="Contorno, Ponta Grossa" data-price="1900" data-bedrooms="3" data-transaction="aluguel">
+                <div class="property-img"><img src="img/12.jpg" alt="Apartamento Contorno"><div class="property-tag">Aluguel</div><div class="property-like"><i class="far fa-heart"></i></div></div>
+                <div class="property-info"><div class="property-price">R$ 1.900/mês</div><div class="property-location"><i class="fas fa-map-marker-alt"></i> Contorno, Ponta Grossa</div><h3 class="property-title">Apartamento com Cozinha Planejada</h3><div class="property-features"><div class="feature"><i class="fas fa-bed"></i> 3 Quartos</div><div class="feature"><i class="fas fa-bath"></i> 2 Banheiros</div><div class="feature"><i class="fas fa-vector-square"></i> 100m²</div></div></div>
+            </div>
+
+            <div class="property-card" data-type="casa" data-location="Nova Rússia, Ponta Grossa" data-price="380000" data-bedrooms="3" data-transaction="venda">
+                <div class="property-img"><img src="img/13.jpg" alt="Casa Nova Rússia"><div class="property-tag">Venda</div><div class="property-like"><i class="far fa-heart"></i></div></div>
+                <div class="property-info"><div class="property-price">R$ 380.000</div><div class="property-location"><i class="fas fa-map-marker-alt"></i> Nova Rússia, Ponta Grossa</div><h3 class="property-title">Casa com Suíte e Área de Lazer</h3><div class="property-features"><div class="feature"><i class="fas fa-bed"></i> 3 Quartos</div><div class="feature"><i class="fas fa-bath"></i> 2 Banheiros</div><div class="feature"><i class="fas fa-vector-square"></i> 130m²</div></div></div>
+            </div>
+
+            <div class="property-card" data-type="apartamento" data-location="Cará-Cará, Ponta Grossa" data-price="1650" data-bedrooms="2" data-transaction="aluguel">
+                <div class="property-img"><img src="img/14.jpg" alt="Apartamento Cará-Cará"><div class="property-tag">Aluguel</div><div class="property-like"><i class="far fa-heart"></i></div></div>
+                <div class="property-info"><div class="property-price">R$ 1.650/mês</div><div class="property-location"><i class="fas fa-map-marker-alt"></i> Cará-Cará, Ponta Grossa</div><h3 class="property-title">Apartamento Aconchegante e Bem Localizado</h3><div class="property-features"><div class="feature"><i class="fas fa-bed"></i> 2 Quartos</div><div class="feature"><i class="fas fa-bath"></i> 1 Banheiro</div><div class="feature"><i class="fas fa-vector-square"></i> 70m²</div></div></div>
+            </div>
+
+            <div class="property-card" data-type="casa" data-location="Boa Vista, Ponta Grossa" data-price="450000" data-bedrooms="4" data-transaction="venda">
+                <div class="property-img"><img src="img/15.jpg" alt="Casa Boa Vista"><div class="property-tag">Venda</div><div class="property-like"><i class="far fa-heart"></i></div></div>
+                <div class="property-info"><div class="property-price">R$ 450.000</div><div class="property-location"><i class="fas fa-map-marker-alt"></i> Boa Vista, Ponta Grossa</div><h3 class="property-title">Casa Ampla com Jardim e Garagem para 2 Carros</h3><div class="property-features"><div class="feature"><i class="fas fa-bed"></i> 4 Quartos</div><div class="feature"><i class="fas fa-bath"></i> 3 Banheiros</div><div class="feature"><i class="fas fa-vector-square"></i> 180m²</div></div></div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contato">
+        <div class="footer-content">
+            <div>
+                <div class="footer-logo" style="display: flex; align-items: center;">
+                    <svg width="45" height="45" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" fill="#0a2647"/>
+                        <path d="M30,50 L50,30 L70,50 L70,80 L30,80 Z" fill="#205295"/>
+                        <circle cx="50" cy="45" r="8" fill="#ffffff"/>
+                    </svg>
+                    <span style="margin-left: 10px; font-size: 20px; font-weight: bold; color: white;">
+                        Panza <span style="color: #5aa9e6;">Imóveis</span>
+                    </span>
+                </div>
+                <div class="footer-about">
+                    <p>Seu imóvel ideal está aqui. Oferecemos imóveis para venda, aluguel e lançamentos em todo o Brasil.</p>
+
+                </div>
+                <div class="social-links">
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/julianopanzacorretor/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://wa.me/554299999999" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Panza Imóveis - Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <!-- Script para filtro -->
+    <script>
+        $(document).ready(function () {
+            $('.search-tab').click(function () {
+                $('.search-tab').removeClass('active');
+                $(this).addClass('active');
+            });
+
+            $('#property-search-form').on('submit', function (e) {
+                e.preventDefault();
+
+                let location = $('#location').val().toLowerCase();
+                let type = $('#property-type').val();
+                let priceRange = $('#price-range').val();
+                let bedrooms = $('#bedrooms').val();
+                let tab = $('.search-tab.active').data('tab');
+                let transaction = tab === 'comprar' ? 'venda' : (tab === 'alugar' ? 'aluguel' : (tab === 'lancamentos' ? 'lancamento' : tab));
+
+
+                let [minPrice, maxPrice] = priceRange ? priceRange.split('-').map(Number) : [0, Infinity];
+                let minBedrooms = bedrooms ? parseInt(bedrooms) : 0;
+
+                let found = false;
+
+                $('.property-card').each(function () {
+                    let card = $(this);
+                    let cardLoc = card.data('location')?.toLowerCase() || "";
+                    let cardType = card.data('type');
+                    let cardPrice = parseInt(card.data('price'));
+                    let cardBedrooms = parseInt(card.data('bedrooms'));
+                    let cardTransaction = card.data('transaction');
+
+                    let match = true;
+
+                    if (location && !cardLoc.includes(location)) match = false;
+                    if (type && cardType !== type) match = false;
+                    if (priceRange && (cardPrice < minPrice || cardPrice > maxPrice)) match = false;
+                    if (bedrooms && cardBedrooms < minBedrooms) match = false;
+                    if (transaction && cardTransaction !== transaction) match = false;
+
+                    if (match) {
+                        card.show();
+                        found = true;
+                    } else {
+                        card.hide();
+                    }
+                });
+
+                if (!found) {
+                    $('.no-results').show();
+                } else {
+                    $('.no-results').hide();
+                }
+            });
+        });
+        $('.tab-link').click(function () {
+            let tab = $(this).data('tab');
+            $('.search-tab').removeClass('active');
+            $(`.search-tab[data-tab="${tab}"]`).addClass('active');
+        });
+
+    </script>
+    <script>
+        $(document).ready(function () {
+            // Clique no menu: ativa aba + scroll suave
+            $('.tab-link').click(function (e) {
+                e.preventDefault(); // Evita ir para "#"
+
+                let tab = $(this).data('tab');
+
+                // Ativa a aba correspondente
+                $('.search-tab').removeClass('active');
+                $(`.search-tab[data-tab="${tab}"]`).addClass('active');
+
+                // Rola suavemente até o formulário
+                $('html, body').animate({
+                    scrollTop: $('#property-search-container').offset().top - 100
+                }, 600);
+            });
+        });
+    </script>
+
+</body>
+</html>

@@ -638,6 +638,17 @@
                 text-align: center;
             }
         
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--primary-color);
+            cursor: pointer;
+            margin: 10px 20px;
+        }
+
+        
         /* Responsive */
         @media (max-width: 768px) {
             .top-bar {
@@ -691,6 +702,41 @@
             .form-group {
                 flex: 1 0 100%;
             }
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px 20px;
+                background-color: white;
+            }
+
+            nav.show {
+                display: flex;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
+            .user-actions {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+                margin-top: 15px;
+            }
+
+            .user-actions a {
+                margin: 10px 0;
+            }
         }
     </style>
 </head>
@@ -711,6 +757,9 @@
                 <a href="mailto:contato@panzaimoveis.com.br"><i class="fas fa-envelope"></i>contato@panzaimoveis.com.br</a>
             </div>
         </div>
+        <button class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </button>
         <nav>
             <ul class="nav-links">
                 <li><a href="#">Início</a></li>
@@ -1095,7 +1144,12 @@
             $('.search-tab').removeClass('active');
             $(`.search-tab[data-tab="${tab}"]`).addClass('active');
         });
-
+		
+		$(document).ready(function () {
+			$('#menu-toggle').click(function () {
+				$('nav').toggleClass('show');
+			});
+		});
     </script>
     <script>
         $(document).ready(function () {

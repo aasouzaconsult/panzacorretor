@@ -762,6 +762,51 @@
         .cta-button i {
             font-size: 18px;
         }
+        
+        @media (max-width: 768px) {
+            .hero-content h2 {
+                font-size: 22px;
+                white-space: normal;
+            }
+
+            #businessForm {
+                padding: 0 15px;
+                margin-top: 20px;
+            }
+
+            #businessForm input,
+            #businessForm textarea {
+                font-size: 16px;
+            }
+
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+                font-size: 16px;
+            }
+        }
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: flex-start;
+        }
+
+        .action-buttons a {
+            white-space: nowrap;
+            text-decoration: none; /* Remove sublinhado */
+        }
+
+        @media (max-width: 480px) {
+            .action-buttons {
+                justify-content: center;
+            }
+
+            .action-buttons a {
+                width: auto;
+                flex: none;
+            }
+        }
 
     </style>
 </head>
@@ -781,7 +826,7 @@
                 <a href="tel:+554299999999"><i class="fas fa-phone"></i>(42) 9999-9999</a>
                 <a href="mailto:contato@panzaimoveis.com.br"><i class="fas fa-envelope"></i>contato@panzaimoveis.com.br</a>
             </div>
-            <div class="user-actions">
+            <div class="action-buttons">
                 <a href="#" class="btn-outline">Fale com Panza</a>
                 <a href="#" class="btn-primary">Anuncie seu Imóvel</a>
             </div>
@@ -806,7 +851,7 @@
             <div class="hero-content">
                 <h2 style="white-space: nowrap;">Converse com o Panza agora mesmo!</h2>
                 <p>Preencha os dados abaixo e fale com Ele para tirar todas suas dúvidas sobre imóveis.</p>
-                <form id="businessForm" onsubmit="sendToWhatsApp(); return false;" style="margin-top: 30px; text-align: left; max-width: 600px; margin-left: auto; margin-right: auto;">
+                <form id="businessForm" onsubmit="sendToWhatsApp(); return false;" style="margin-top: 30px; text-align: left; max-width: 600px; margin: 30px auto; width: 100%;">
                     <div style="margin-bottom: 15px;">
                         <label for="name">Nome:</label><br>
                         <input type="text" id="name" required style="width: 100%; padding: 10px; border-radius: 8px; border: 1px solid #ccc;">

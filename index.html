@@ -738,6 +738,30 @@
                 margin: 10px 0;
             }
         }
+        
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: flex-start;
+        }
+
+        .action-buttons a {
+            white-space: nowrap;
+            text-decoration: none; /* Remove sublinhado */
+        }
+
+        @media (max-width: 480px) {
+            .action-buttons {
+                justify-content: center;
+            }
+
+            .action-buttons a {
+                width: auto;
+                flex: none;
+            }
+        }
+        
     </style>
 </head>
 <body>
@@ -756,8 +780,8 @@
                 <a href="tel:+554299999999"><i class="fas fa-phone"></i>(42) 9999-9999</a>
                 <a href="mailto:contato@panzaimoveis.com.br"><i class="fas fa-envelope"></i>contato@panzaimoveis.com.br</a>
             </div>
-            <div class="user-actions">
-                <a href="FalePanza.html" class="btn-outline">Fale com Panza</a>
+            <div class="action-buttons">
+                <a href="#" class="btn-outline">Fale com Panza</a>
                 <a href="#" class="btn-primary">Anuncie seu Imóvel</a>
             </div>
         </div>

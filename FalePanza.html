@@ -769,17 +769,21 @@
     <!-- Header -->
     <header>
         <div class="top-bar">
-            <div class="logo">
+            <a href="index.html" class="logo" style="text-decoration: none;">
                 <svg width="45" height="45" viewBox="0 0 100 100">
                     <circle cx="50" cy="50" r="40" fill="#0a2647"/>
                     <path d="M30,50 L50,30 L70,50 L70,80 L30,80 Z" fill="#205295"/>
                     <circle cx="50" cy="45" r="8" fill="#ffffff"/>
                 </svg>
                 <div class="logo-text">Panza <span>Imóveis</span></div>
-            </div>
+            </a>
             <div class="contact-info">
                 <a href="tel:+554299999999"><i class="fas fa-phone"></i>(42) 9999-9999</a>
                 <a href="mailto:contato@panzaimoveis.com.br"><i class="fas fa-envelope"></i>contato@panzaimoveis.com.br</a>
+            </div>
+            <div class="user-actions">
+                <a href="#" class="btn-outline">Fale com Panza</a>
+                <a href="#" class="btn-primary">Anuncie seu Imóvel</a>
             </div>
         </div>
         <button class="menu-toggle" id="menu-toggle">
@@ -794,10 +798,6 @@
                 <li><a href="index.html">Sobre Nós</a></li>
                 <li><a href="index.html#contato">Nossas redes</a></li>
             </ul>
-            <div class="user-actions">
-                <a href="#" class="btn-outline">Fale com Panza</a>
-                <a href="#" class="btn-primary">Anuncie seu Imóvel</a>
-            </div>
         </nav>
     </header>
 
@@ -832,6 +832,37 @@
             </div>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer id="contato">
+        <div class="footer-content">
+            <div>
+                <div class="footer-logo" style="display: flex; align-items: center;">
+                    <svg width="45" height="45" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" fill="#0a2647"/>
+                        <path d="M30,50 L50,30 L70,50 L70,80 L30,80 Z" fill="#205295"/>
+                        <circle cx="50" cy="45" r="8" fill="#ffffff"/>
+                    </svg>
+                    <span style="margin-left: 10px; font-size: 20px; font-weight: bold; color: white;">
+                        Panza <span style="color: #5aa9e6;">Imóveis</span>
+                    </span>
+                </div>
+                <div class="footer-about">
+                    <p>Seu imóvel ideal está aqui. Oferecemos imóveis para venda, aluguel e lançamentos em todo o Brasil.</p>
+
+                </div>
+                <div class="social-links">
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/julianopanzacorretor/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://wa.me/554299999999" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Panza Imóveis - Todos os direitos reservados.
+        </div>
+    </footer>
     
     <script>
         function sendToWhatsApp() {

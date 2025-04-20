@@ -744,17 +744,21 @@
     <!-- Header -->
     <header>
         <div class="top-bar">
-            <div class="logo">
+            <a href="index.html" class="logo" style="text-decoration: none;">
                 <svg width="45" height="45" viewBox="0 0 100 100">
                     <circle cx="50" cy="50" r="40" fill="#0a2647"/>
                     <path d="M30,50 L50,30 L70,50 L70,80 L30,80 Z" fill="#205295"/>
                     <circle cx="50" cy="45" r="8" fill="#ffffff"/>
                 </svg>
                 <div class="logo-text">Panza <span>Imóveis</span></div>
-            </div>
+            </a>
             <div class="contact-info">
                 <a href="tel:+554299999999"><i class="fas fa-phone"></i>(42) 9999-9999</a>
                 <a href="mailto:contato@panzaimoveis.com.br"><i class="fas fa-envelope"></i>contato@panzaimoveis.com.br</a>
+            </div>
+            <div class="user-actions">
+                <a href="FalePanza.html" class="btn-outline">Fale com Panza</a>
+                <a href="#" class="btn-primary">Anuncie seu Imóvel</a>
             </div>
         </div>
         <button class="menu-toggle" id="menu-toggle">
@@ -769,10 +773,6 @@
                 <li><a href="#">Sobre Nós</a></li>
                 <li><a href="#contato">Nossas redes</a></li>
             </ul>
-            <div class="user-actions">
-                <a href="FalePanza.html" class="btn-outline">Fale com Panza</a>
-                <a href="#" class="btn-primary">Anuncie seu Imóvel</a>
-            </div>
         </nav>
     </header>
 
@@ -1144,12 +1144,12 @@
             $('.search-tab').removeClass('active');
             $(`.search-tab[data-tab="${tab}"]`).addClass('active');
         });
-		
-		$(document).ready(function () {
-			$('#menu-toggle').click(function () {
-				$('nav').toggleClass('show');
-			});
-		});
+        
+        $(document).ready(function () {
+            $('#menu-toggle').click(function () {
+                $('nav').toggleClass('show');
+            });
+        });
     </script>
     <script>
         $(document).ready(function () {
